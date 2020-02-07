@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "portafolioPasto",
+      "public": "dist/portafolioPasto",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

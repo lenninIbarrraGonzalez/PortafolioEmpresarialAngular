@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "appportafolio-63774": {
+      "hosting": {
+        "portafolioPasto": [
+          "appportafolio-63774"
+        ]
+      }
+    }
+  }
+}
