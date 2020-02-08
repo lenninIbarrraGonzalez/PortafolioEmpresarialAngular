@@ -1,0 +1,71 @@
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <a routerLink="/lugares" class="breadcrumb-item active" aria-current="page">Contacto</a>
+    </ol>
+  </nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputFirstName">Nombre</label>
+            <input type="text" class="form-control" id="inputAddress">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputLastName">Apellido</label>
+            <input type="text" class="form-control" id="inputAddress">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Email</label>
+            <input type="email" class="form-control" id="inputEmail4">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Tel&eacute;fono</label>
+            <input type="password" class="form-control" id="inputPassword4">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputAddress">Direcci&oacute;n</label>
+          <input type="text" class="form-control" id="inputAddress" placeholder="Barrio, calle">
+        </div>
+       
+        <div class="form-group">
+          <div class="form-group">
+            <label for="inputCity">Ciudad</label>
+            <input type="text" class="form-control" id="inputCity">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Escribanos su mensaje</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Acepto los t&eacute;rminos y condiciones
+            </label>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-4 pt-4 pl-4" >
+      <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+        <div class="card-header">All Nexus SAS</div>
+        <div class="card-body">
+          <h5 class="card-title">Estamos ubicados en:</h5>
+          <p class="card-text">Calle 20 # 26-61 oficina 208</p>
+          <p class="card-text">Celular 315 441 5599</p>
+        </div>
+      </div>
+    </div>
+  </div> 
+  <button type="button" class="btn btn-primary mr-2">Enviar</button>
+  <button type="button" class="btn btn-light" routerLink="/lugares">Cancelar</button>
+</div> 
+

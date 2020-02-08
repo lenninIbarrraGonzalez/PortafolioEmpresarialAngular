@@ -1,0 +1,402 @@
+Qué es Typescript
+Typescript, es un superset de JS, nos agrega características como tipos, clases e interfaces. Los programas que escribimos en Typescript son transitados a código JS.
+
+Transpilar de TypeScript a Javascript para que lo entienda el navegador
+
+Generación y estructura de Angular 4
+
+Vamos a instalar las herramientas que usaremos para generar nuestro proyecto Angular 4.
+
+Node.js, en la consola validamos que tenemos instalado npm con el comando:
+npm -v
+3.5.2
+
+
+Angular CLI, recuerda ejecutar los comandos con privilegios de administrador.
+sudo install -g @angula/CLI
+ng new nombre-proyecto
+ir a la carpeta 
+para iniciar ng server --- 
+** NG Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/
+
+
+Los modulos son las piezas mas grandes en las que se puede dividir una aplicación de Angular 4, son piezas que podemos reutilizar dentro de nuestro proyecto pero también podemos usarlas en otros proyectos.
+Angular nos ofrece módulos nativos como HTTP, Browser, Forms, Reactive Forms.
+
+Módulos:
+
+Nativos: los propios de Angular 4.
+
+De terceros: realizados por otras personas y que nosotros podemos usar, siendo libres o pago.
+
+Propios: los que realicemos.
+
+Para anotar nuestro módulos y además -> src/app/app.module.ts
+
+Componentes.
+
+Imports: módulos externos a importar.
+
+Providers: servicios necesarios.
+
+Bootstrap: con que componente vamos a iniciar.
+
+Un módulo en un app, tiene una entidad propia y puede estar compuesto por más cosas como componentes.
+
+Cada vista debería ser un componente, y está puede o no, componerse por otros componentes, dependiendo de la complejidad, profundidad y la reutilización de código.
+
+
+<h1>Angular Basics</h1>
+@NgModule: Palabra reservada para declarar un Modulo, contiene 4 arrays:
+
+declarations: Lista de componentes
+imports: Lista de modulos
+providers: Lista de servicios
+boostrap: Componente de inicio
+@Component: Palabra reservada para declarar un componente, contiene varios elementos:
+
+selector: Tag de HTML para insertar el componente
+templateUrl: Archivo HTML que va a usar el componente
+styleUrls: Archivos CSS que usará el template
+
+Tipos de Data Binding y String Interpolation
+
+Data binding es la comunicación entre tu código de TypeScript y el HTML. Siempre ten presente que al cliente le importa lo que ve,
+así que comunicar nuestro lógica (TypeScript) al template (HTML) es muy importante.
+String Interpolation Enviar información de TypeScript a HTML.
+
+
+Data Binding: Comunicación entre TS y HTML
+Tipos:
+
+String Interpolation: TS a HTML
+Property Binding: HTML a TS
+Event Binding: Eventos de HTML a TS
+Two way databiing: Comunicación entre TS y HTML (bidireccional)
+
+
+String Interpolation: TS a HTML
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'All Nexus';
+  a = 3;
+  b = 4;
+
+}
+
+En el HTML
+
+<hr>
+  la suma de {{a}} + {{b}} = {{a+b}}
+
+
+Mediante property binding puede existir comunicación de HTML a TS. En este caso se deshabilitar el botón click y enviamos la variable “listo”
+
+<button [disabled]="!listo"> Click me </button>
+Del lado del Componente recibiremos la variable en un constructor y cambiará a “true” la variable después de 3 seg:
+
+listo = false;
+
+  constructor(){
+    setTimeout(() => {
+      this.listo = true;
+    }, 3000)
+  }
+
+  
+  Event Binding
+   <button [disabled]="!listo" (click)="hacerAlgo()">Click me!</button>
+
+Del lado del Componente 
+  hacerAlgo(){
+    alert("Evento");
+  }
+Two Way Data Binding
+
+<hr>
+  Nombre: 
+  <input type="text" placeholder="Nombre" [(ngModel)]="nombre"/>
+  Apellido: 
+  <input type="text" placeholder="Apellido" [(ngModel)]="apellido"/>
+  <hr>
+  Mi nombre es {{nombre +' '+ apellido}}
+  <!-- {{nombre}}
+  {{apellido}} -->
+
+Del lado del Componente definir variables
+
+ nombre:string ='';
+ apellido:string='';
+
+ importar   en app.modules
+ 
+ import { FormsModule} from '@angular/forms';
+ imports: [
+    BrowserModule,
+    FormsModule 
+
+
+Respuesta a:
+Directivas en Angular 4 y ngFor
+ngFor: Directiva estructural que permite recorrer diferentes elementos de un arreglo
+
+TS
+
+lugares:any = [
+    {nombre:'Florería la gardenia'},
+    {nombre:'Donas la pasadita'},
+    {nombre:'Veterinaria huellas'},
+  ];
+html
+
+<ul>
+  <li *ngFor="let lugar of lugares">{{lugar.nombre}}</li>
+</ul>
+Importante: Es necesario definir el arreglo como “any” porque puede esperar cualquier tipo de dato en un futuro
+(si trabajamos con servicios en el backend por ejemplo)
+
+Importante
+<ng-container> -> se comporta similar al <div> pero a diferencia de este último no agrega elementos al DOM
+
+<ul>
+  <ng-container *ngFor="let lugar of lugares">
+      <li *ngIf="lugar.active">{{lugar.nombre}}</li>
+  </ng-container>
+</ul>
+
+No pueden haber dos directivas en una misma etiqueta li
+
+
+ngStyle
+
+<ng-container *ngFor = "let lugar of lugares">
+        <li [ngStyle] = "{color: (lugar.active) ? 'black' : 'gray'}">{{lugar.nombre}}</li>
+</ng-container>
+
+ngClass
+
+en los estilos creamos una regla
+
+.numero_par{
+    background-color: aliceblue;
+    color: blue;
+}
+
+y en el html 
+implementamos el ngClass
+
+<ng-container *ngFor = "let lugar of lugares ; let i = index">
+ <li [ngStyle] = "{color: (lugar.active) ? 'black' : 'gray'}" [ngClass] = "{numero_par: (i+1)%2 == 0} ">{{lugar.nombre}}</li>
+</ng-container>
+
+ngSwitch
+Con esta directiva puedo controlar un switch que se evalua según las condiciones 
+en el app.component.ts agregamos los campos cercania y distancia
+
+lugares:any = [
+    {cercania: 1, distancia: 10, active: true, nombre: 'Capitan Nirvana'},
+    {cercania: 1, distancia: 12, active: true, nombre: 'Barba Roja'},
+    {cercania: 1, distancia: 15, active: false, nombre: 'El barto'},
+    {cercania: 2, distancia: 30, active: true, nombre: 'Rey lagarto'},
+    {cercania: 2, distancia: 32, active: false, nombre: 'Retro ochentas'},
+    {cercania: 3, distancia: 80, active: true, nombre: 'Filomena'},
+    {cercania: 3, distancia: 69, active: false, nombre: 'coyote'}
+  ]
+
+En el app.component.html
+[ngSwitch] = "lugar.cercania"  evalua la variable
+*ngSwitchCase="1" condiciona según la evaluacion 
+
+<ul>
+  <ng-container *ngFor = "let lugar of lugares ; let i = index" [ngSwitch] = "lugar.cercania">
+      <li [ngStyle] = "{color: (lugar.active) ? 'black' : 'gray'}" [ngClass] = "{numero_par: (i+1)%2 == 0} ">
+        {{lugar.nombre}} - 
+        <span *ngSwitchCase="1" [ngStyle] ="{color: 'green'}">Muy cercano</span>
+        <span *ngSwitchCase="2" [ngStyle] ="{color: 'black'}">cercano</span>
+        <span *ngSwitchCase="3" [ngStyle] ="{color: 'red'}">Lejano</span>
+      </li>
+  </ng-container>
+</ul>
+
+
+Angular nos permite desarrollar directivas personalizadas. Es necesario manejar diferentes elementos, tales como:
+
+@Directive: Anotación para identificar un elemento como directiva.
+
+OnInit: Interface que es llamada cuando las propiedades de una directiva son invocadas.
+
+ngOnInit: Función que es ejecutada al momento de llamar la directiva. Acá se coloca la lógica de negocio.
+
+ElementRef: Clase utilizada para hacer referencia al elemento en donde se está implementando la directiva.
+
+Renderer2: Renderiza el elemento cuando se le asigna un estilo.
+
+Input: Tipo de metadata de entrada.
+
+------
+
+En el decorador @Directive se especifica el selector de la directiva.
+ElementRef: nos permite crear una referencia de elemento de HTML para poder manipularla en TypeScript.
+Renderer2: También permite manipular un elemento HTML, pero más enfocado a css, esto se hace también para que el mismo código sirva en las diferentes plataformas (servidor, browser, mobile, etc).
+ngOnInit: Acá colocamos toda la lógica del negocio, es decir, lo que quremos que nuestra directiva ejecute.
+setStyle() recibe tres parámetros: Elemento nativo, Atributo de css que queremos modificar, Valor para el atributo de css.
+
+------HostListener-----
+
+Los host listeners nos ayudan a escuchar los eventos de manera muy sencilla, tiene tres parámetros,
+el evento, el objetivo del evento y el código a ejecutar cuando se ejecute el evento.
+
+Respuesta a:
+Host Listeners
+HostListener: permiten capturar los eventos en nuestro componente.
+Parámetros: evento y elemento
+onClick: Función en donse se ejecuta la lógica de negocio momento de capturar el evento
+
+Nota: La directiva fué invocada en el html sin “[]” porque no se pasan parámetros. En caso contrario es necesario colocarlos
+
+----Host Binders----
+Host Binding nos permite editar elementos del DOM o el HTML al que esté asignado desde nuestra directiva.
+Recibe el atributo del HTML que queremos resaltar.
+
+Angular Material y Bootstrap
+Angular por defecto no posee estilos, pero se pueden agregar de forma muy sencilla, la parte visual de la aplicación es muy importante porque es lo que mas le interesa al usuario final.
+
+Angular Material es un framework de estilos para tus aplicaciones.
+
+Otra alternativa es bootstrap, es un framework para hacer interfaces que tiene estilos muy bonitos, y una muy buena guía, nos permite implementar el diseño responsive de forma muy sencilla y cómoda.
+Configurando e implementando Bootstrap en nuestro proyecto
+Instalaremos Bootstrap en nuestro proyecto usando
+
+npm install bootstrap
+
+<div class="container">
+  <ul class="list-group">
+    <ng-container *ngFor = "let lugar of lugares">
+        <li class="list-group-item" *ngIf = "lugar.active">{{lugar.nombre}}</li>
+    </ng-container>
+  </ul>
+</div>
+
+
+Qué hace el router en Angular 4
+El routing en Angular 4 nos permite implementar navegación en nuestra aplicación,
+podemos asignar vistas/componentes específicos para cada url que deseemos. Routing 
+nos permite enviar y recibir parámetros.
+
+Importar módulo Router
+import { Routes } from "@angular/router";
+Definir las rutas del proyecto en el módulo:
+constappRoutes: Routes = [
+  {path: '', component: AppComponent},
+  {path: 'lugares', component: AppComponent}
+];
+
+Para que el funcione con mas de una ruta importamos
+RouterModule.forRoot(appRoutes)   ----appRoutes es la variable de las rutas
+
+Creamos una carpeta para el modulo con sus dos archivos ts y html
+
+luego en app.modules incluimos el modulo
+
+@NgModule({
+  declarations: [
+    AppComponent,
+      ResaltarDirective,
+      ContarClicksDirective,
+      DetalleComponent
+  ],
+
+  y creamos la ruta
+
+  const appRoutes: Routes = [
+  {path: '', component:AppComponent},
+  {path: 'lugares', component: AppComponent},
+  {path: 'detalle', component: DetalleComponent},
+]
+
+RouterModule: Módulo de angular para inicializar el sistema de rutas recibiendo como parámetro las
+diferentes rutas definidas en el proyecto con la función “forRoot”
+
+router-outlet: Etiqueta para colocar el contenido de las diferentes rutas en el html
+
+Diferencias entre href y routerLink
+Para implementar navegación en SPA’s la mejor forma de hacerlo es usando el routerLink que nos
+provee Angular 4 ya que así reducimos los tiempos de carga y aprovechamos al máximo las 
+capacidades del framework
+
+<a class="nav-item nav-link active" href="/lugares">Inicio<span class="sr-only">(current)</span></a>
+con routerLink
+<a class="nav-item nav-link active" routerLink="/lugares">Inicio<span class="sr-only">(current)</span></a>
+
+modificamos active por routerLinkActive en todos los li o a 
+<a class="nav-item nav-link routerLinkActive" routerLink="/detalle">Detalle</a>
+Parámetros en Rutas
+Vamos a asignar a cada lugar de nuestro directorio un identificador único y vamos a agregar navegación desde el lugar a su propia página de detalles.
+
+
+Formato de la ruta para pasar parámetros:
+{path: 'detalle/:id', component: Component}
+Recepción del parámetro en el component:
+
+en app.modules.ts
+import { ActivatedRoute } from'@angular/router';
+
+en detalle.component.ts
+export classComponent{
+  constructor(private route: ActivatedRoute){
+    console.log(this.route.snapshot.params['id']);
+  }
+}
+En donde “ActivatedRoute” es la ruta en donde se envía el parámetro y “this.route.snapshot.params”
+el arreglo en donde están todos los parámetros definidos en el routing.
+El id del detalle.component.ts debe ser el mismo de  {path: 'detalle/:id', component: DetalleComponent} en app.component.html
+
+
+Para hacerlo dinamico hacemos lo siguiente en lugares.component.html
+
+<a routerLink="/detalle/{{lugar.id}}"><li class="list-group-item" *ngIf = "lugar.active">{{lugar.nombre}}</li></a>
+
+-----------------Parámetros tipo Query-----------------------
+
+En lugares.component.html agregamos
+
+<a routerLink="/detalle/{{lugar.id}}" [queryParams]="{action2:'edit', referer:'google', referer2:'twitter'}"><li class="list-group-item" *ngIf = "lugar.active">{{lugar.nombre}}</li></a>
+
+En detalle.component.ts
+console.log(this.route.queryParamMap);
+console.log(this.route.snapshot.queryParams['action2']);
+console.log(this.route.snapshot.queryParams['referer']);
+console.log(this.route.snapshot.queryParams['referer2']);
+
+----------creando la vista detalle
+archivos modificados detalle.component. y .html
+
+---Creando nuestro propio servicios-----
+
+Creación de carpeta “services”
+
+Creación del servicio LugaresService
+
+Injectable: Directiva que permite inyectar servicio en otros componentes
+
+Creación de funciones para obtener o buscar data
+
+Inclusión del servicio en el providers del app.module
+
+Importación del servicio en el componente a usar
+
+Comando para generar un service por consola
+
+Deben crear la carpeta y dentro de la carpeta ejecutar el comando, creara los archivos y hará las importaciones necesarias
+
+ng g service [y el nombre]
+
+ng g s [carpeta]/[nombre]
+

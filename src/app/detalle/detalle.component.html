@@ -1,0 +1,20 @@
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <a routerLink="/lugares" class="breadcrumb-item active" aria-current="page">Lugares</a> / {{lugar.nombre}}
+    </ol>
+  </nav>
+
+<div class="container">
+    <h1>{{lugar.nombre}}</h1>
+    <hr />
+    <small>{{lugar.distancia}} km</small>
+    <br />
+    <div class="card card-body bg-ligth">
+        <p>
+            {{lugar.descripcion}}
+        </p>
+        <b>Plan {{lugar.plan}}</b>
+    </div>
+</div> 
+

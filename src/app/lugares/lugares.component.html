@@ -1,0 +1,56 @@
+<!-- mapa de google -->
+<h1>Mapa</h1>
+<agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map>
+<hr/>
+
+<!-- información de lugares -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>Lugares Cercanos</h2>
+      <ul class="list-group">
+        <ng-container *ngFor = "let lugar of lugares">
+            <a routerLink="/detalle/{{lugar.id}}" [queryParams]="{action2:'edit', referer:'google', referer2:'twitter'}">
+              <li class="list-group-item" *ngIf = "lugar.active">{{lugar.nombre}}</li>
+            </a>
+        </ng-container>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <h2>Lugares Destacados</h2>
+      <ul class="list-group">
+        <ng-container *ngFor = "let lugar of lugares">
+          <a routerLink="/detalle/{{lugar.id}}">
+            <li *ngIf = "!lugar.active" class="list-group-item">{{lugar.nombre}}</li>
+          </a>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<hr/>
+
+<!-- ejercicios viejos  -->
+
+<!-- 
+<hr>
+<ul>
+  <ng-container *ngFor = "let lugar of lugares ; let i = index">
+      <li [ngStyle] = "{color: (lugar.active) ? 'black' : 'gray'}" [ngClass] = "{numero_par: (i+1)%2 == 0}" [resaltar]="lugar.plan">{{lugar.nombre}}</li>
+  </ng-container>
+</ul> 
+
+<hr>
+<ul>
+  <ng-container *ngFor = "let lugar of lugares ; let i = index" [ngSwitch] = "lugar.cercania">
+      <a ><li contar-clicks [ngStyle] = "{color: (lugar.active) ? 'black' : 'gray'}" [ngClass] = "{numero_par: (i+1)%2 == 0}" [resaltar]="lugar.plan">
+        {{lugar.nombre}} - 
+        <span *ngSwitchCase="1" [ngStyle] ="{color: 'green'}">Muy cercano</span>
+        <span *ngSwitchCase="2" [ngStyle] ="{color: 'black'}">cercano</span>
+        <span *ngSwitchCase="3" [ngStyle] ="{color: 'red'}">Lejano</span>
+      </li></a>
+  </ng-container>
+</ul> -->
