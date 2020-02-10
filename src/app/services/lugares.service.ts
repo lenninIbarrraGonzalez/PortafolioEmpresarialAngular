@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+
 
 @Injectable()
 export class LugaresService {
@@ -11,6 +13,11 @@ export class LugaresService {
     {id:6, plan: 'gratuito', cercania: 3, distancia: 80, active: true, nombre: 'Filomena', descripcion: 'Descripción  del lugar, más adelante mayor información'},
     {id:7, plan: 'gratuito', cercania: 3, distancia: 69, active: false, nombre: 'coyote', descripcion: 'Descripción  del lugar, más adelante mayor información'}
   ];
+
+   constructor(private afDB:AngularFirestore){
+    
+   }
+
   public getLugares(){
     return this.lugares;
   }
@@ -18,4 +25,8 @@ export class LugaresService {
     return this.lugares.filter((lugar)=>{
       return lugar.id == id})[0] || null;
   }
+   public guardarLugar(lugar){
+     console.log(lugar);
+     this.afDB.collection('lugares').doc(lugar.id).set(lugar);
+   }
 }

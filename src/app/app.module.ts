@@ -16,13 +16,20 @@ import { LugaresService } from './services/lugares.service';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+// import { AngularFireAuthModule } from '@angular/fire/auth';
+
 import { environment } from '../environments/environment';
+import { CrearComponent } from './crear/crear.component';
+
+import { FormsModule} from '@angular/forms';
 
 const appRoutes: Routes = [
   {path: '', component:LugaresComponent},
   {path: 'lugares', component: LugaresComponent},
   {path: 'detalle/:id', component: DetalleComponent},
-  {path: 'contacto', component: ContactoComponent}
+  {path: 'contacto', component: ContactoComponent},
+  {path: 'crear', component: CrearComponent}
   
 ]
 
@@ -33,15 +40,18 @@ const appRoutes: Routes = [
     ContarClicksDirective,
     DetalleComponent,
     LugaresComponent,
-    ContactoComponent
+    ContactoComponent,
+    CrearComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebase, 'firebase'),
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
-
+    AngularFireStorageModule,
+    // AngularFireAuthModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCeJen0VD75mn22rs6603basqHGe9ab1N0'
     }),

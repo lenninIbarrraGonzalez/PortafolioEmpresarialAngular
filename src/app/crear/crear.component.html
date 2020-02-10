@@ -1,0 +1,37 @@
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <a routerLink="/lugares" class="breadcrumb-item active" aria-current="page">Crear negocio</a>
+    </ol>
+  </nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      
+        <div class="form-row">
+          <label>Nombre</label>
+          <input type="text" class="form-control" [(ngModel)]="lugar.nombre" name="nombre">
+        
+          <label>Distancia</label>
+          <input type="text" class="form-control" [(ngModel)]="lugar.distancia" name="distancia">
+
+          <label>Ceracania</label>
+          <input type="text" class="form-control" [(ngModel)]="lugar.cercania" name="cercania">
+
+          <label>Descripción</label>
+          <textarea class="form-control" [(ngModel)]="lugar.descripcion" name="descripcion"></textarea>
+
+          <label>Plan</label>
+          <input type="text" class="form-control" [(ngModel)]="lugar.plan" name="plan">
+
+          <a class="btn btn-primary" (click)="guardarLugar()">Enviar</a>
+          <button type="button" class="btn btn-light" routerLink="/lugares">Cancelar</button>
+        </div>
+        <br>
+        
+    </div>
+  </div> 
+  <hr>
+</div> 
+
