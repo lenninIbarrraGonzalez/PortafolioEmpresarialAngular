@@ -19,7 +19,8 @@ export class LugaresService {
    }
 
   public getLugares(){
-    return this.lugares;
+    //return this.lugares;
+    return this.afDB.collection('lugares').valueChanges();
   }
   public buscarLugar(id){
     return this.lugares.filter((lugar)=>{
@@ -28,5 +29,9 @@ export class LugaresService {
    public guardarLugar(lugar){
      console.log(lugar);
      this.afDB.collection('lugares').doc(lugar.id).set(lugar);
+   }
+
+   public obtenerGeoData(direccion){
+    
    }
 }

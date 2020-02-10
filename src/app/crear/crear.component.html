@@ -8,7 +8,6 @@
 <div class="container">
   <div class="row">
     <div class="col-6">
-      
         <div class="form-row">
           <label>Nombre</label>
           <input type="text" class="form-control" [(ngModel)]="lugar.nombre" name="nombre">
@@ -24,11 +23,20 @@
 
           <label>Plan</label>
           <input type="text" class="form-control" [(ngModel)]="lugar.plan" name="plan">
+          
+          <label>Calle y numero</label>
+          <input type="text" class="form-control" [(ngModel)]="lugar.calle" name="calle">
 
+          <label>Ciudad</label>
+          <input type="text" class="form-control" [(ngModel)]="lugar.ciudad" name="ciudad">
+
+          <label>País</label>
+          <input type="text" class="form-control" [(ngModel)]="lugar.pais" name="pais">
+         
           <a class="btn btn-primary" (click)="guardarLugar()">Enviar</a>
           <button type="button" class="btn btn-light" routerLink="/lugares">Cancelar</button>
+          
         </div>
-        <br>
         
     </div>
   </div> 

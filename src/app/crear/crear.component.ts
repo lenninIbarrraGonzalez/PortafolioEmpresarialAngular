@@ -12,5 +12,7 @@ export class CrearComponent {
   guardarLugar(){
     this.lugar.id = Date.now().toString();
     this.lugaresService.guardarLugar(this.lugar);
+    alert('se creo un nuevo negocio');
+    this.lugar = {};
   }
 }

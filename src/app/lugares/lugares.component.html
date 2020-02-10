@@ -13,13 +13,16 @@
       <h2>Lugares Cercanos</h2>
       <ul class="list-group">
         <ng-container *ngFor = "let lugar of lugares">
-            <a routerLink="/detalle/{{lugar.id}}" [queryParams]="{action2:'edit', referer:'google', referer2:'twitter'}">
-              <li class="list-group-item" *ngIf = "lugar.active">{{lugar.nombre}}</li>
+            <!-- <a routerLink="/detalle/{{lugar.id}}" [queryParams]="{action2:'edit', referer:'google', referer2:'twitter'}"> -->
+            <a routerLink="/detalle/{{lugar.id}}">
+
+              <!-- <li class="list-group-item" *ngIf = "lugar.active">{{lugar.nombre}}</li> -->
+              <li class="list-group-item">{{lugar.nombre}}</li>
             </a>
         </ng-container>
       </ul>
     </div>
-    <div class="col-md-4">
+    <!-- <div class="col-md-4">
       <h2>Lugares Destacados</h2>
       <ul class="list-group">
         <ng-container *ngFor = "let lugar of lugares">
@@ -28,7 +31,7 @@
           </a>
         </ng-container>
       </ul>
-    </div>
+    </div> -->
   </div>
 </div>
 

@@ -24,12 +24,14 @@ import { CrearComponent } from './crear/crear.component';
 
 import { FormsModule} from '@angular/forms';
 
+import { HttpClientModule }    from '@angular/common/http';
+
 const appRoutes: Routes = [
   {path: '', component:LugaresComponent},
   {path: 'lugares', component: LugaresComponent},
   {path: 'detalle/:id', component: DetalleComponent},
   {path: 'contacto', component: ContactoComponent},
-  {path: 'crear', component: CrearComponent}
+  {path: 'crear/:id', component: CrearComponent}
   
 ]
 
@@ -52,6 +54,7 @@ const appRoutes: Routes = [
     AngularFirestoreModule,
     AngularFireStorageModule,
     // AngularFireAuthModule,
+    HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCeJen0VD75mn22rs6603basqHGe9ab1N0'
     }),
