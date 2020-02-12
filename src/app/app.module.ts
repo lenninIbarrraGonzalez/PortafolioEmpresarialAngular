@@ -31,7 +31,7 @@ const appRoutes: Routes = [
   {path: 'lugares', component: LugaresComponent},
   {path: 'detalle/:id', component: DetalleComponent},
   {path: 'contacto', component: ContactoComponent},
-  {path: 'crear/:id', component: CrearComponent}
+  {path: 'crear', component: CrearComponent}
   
 ]
 
