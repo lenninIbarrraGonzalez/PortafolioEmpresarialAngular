@@ -10,9 +10,16 @@ export class CrearComponent {
   constructor(private lugaresService: LugaresService){
   }
   guardarLugar(){
-    this.lugar.id = Date.now().toString();
-    this.lugaresService.guardarLugar(this.lugar);
-    alert('se creo un nuevo negocio');
-    this.lugar = {};
+    var direccion = this.lugar.calle+''+this.lugar.ciudad+''+this.lugar.pais;
+    this.lugaresService.obtenerGeoData(direccion).subscribe((result)=>{
+      debugger;
+      this.lugar.lat = 0;
+      this.lugar.lng = 0;
+      this.lugar.id = Date.now().toString();
+      this.lugaresService.guardarLugar(this.lugar);
+      alert('se creo un nuevo negocio');
+      this.lugar = {};
+    })
+    
   }
 }

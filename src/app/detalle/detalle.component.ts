@@ -14,12 +14,12 @@ export class DetalleComponent {
   constructor(private route: ActivatedRoute, private lugaresService:LugaresService){
     console.log(this.route.snapshot.params['id']);
     console.log(this.route.queryParamMap);
-    console.log(this.route.snapshot.queryParams['action2']);
-    console.log(this.route.snapshot.queryParams['referer']);
-    console.log(this.route.snapshot.queryParams['referer2']);
+    // console.log(this.route.snapshot.queryParams['action2']);
+    // console.log(this.route.snapshot.queryParams['referer']);
+    // console.log(this.route.snapshot.queryParams['referer2']);
     this.id = this.route.snapshot.params['id'];
     // console.log(this.buscarLugar());
-    this.lugar = this.lugaresService.buscarLugar(this.id);
+    //this.lugar = this.lugaresService.buscarLugar(this.id);
   }
   
 }

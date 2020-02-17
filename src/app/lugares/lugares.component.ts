@@ -18,14 +18,21 @@ export class LugaresComponent implements OnInit{
       center: [-77.2802004, 1.2182159], 
       zoom: 15
       });
-    }
-
-    
   
-   
+  this.crearMarcador(-77.27792720000002, 1.2169178999999914);
+}
     
   // lat:number = 1.2182159;
   // lng:number = -77.2802004;
+
+  crearMarcador(lng: number, lat: number){
+    const marker = new Mapboxgl.Marker({
+      draggable: false
+      })
+      .setLngLat([lng, lat])
+      .addTo(this.mapa);
+  }
+  //find del mapa
     lugares = null;
 
     constructor(private lugaresService: LugaresService){
@@ -33,6 +40,4 @@ export class LugaresComponent implements OnInit{
       this.lugares = lugares;
     })
   }
-
-  
 }
