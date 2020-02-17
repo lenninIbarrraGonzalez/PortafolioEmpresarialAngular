@@ -33,7 +33,8 @@ export class LugaresService {
    }
 
    public obtenerGeoData(direccion){
-   // return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address='+direccion+'&key=AIzaSyCiGsoFevMN2J-dXWtD_31AN4UkraR4Hq0');
-    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCiGsoFevMN2J-dXWtD_31AN4UkraR4Hq0&address='+ direccion);
-  }
-}
+
+    const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + direccion + '.json?access_token=pk.eyJ1Ijoid2VyZDIwMDAiLCJhIjoiY2szdnowd3BpMHQ1eDNlbzFkbzlxbjFraCJ9._Z1lvFBENlSl58pJMCAIPg';
+    return this.http.get(url);
+    }
+}  
