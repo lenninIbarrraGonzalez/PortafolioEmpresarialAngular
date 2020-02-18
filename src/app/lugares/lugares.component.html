@@ -7,7 +7,7 @@
 
 <div id="mapa-mapbox"></div>
 <hr/>
-<a class="btn btn-success ml-4" routerLink="/crear">Crear nuevo negocio</a>
+<a class="btn btn-success ml-4" routerLink="/crear/new">Crear nuevo negocio</a>
 <hr>
 <!-- información de lugares -->
 <div class="container">
@@ -17,8 +17,8 @@
       <ul class="list-group">
         <ng-container *ngFor = "let lugar of lugares">
             <!-- <a routerLink="/detalle/{{lugar.id}}" [queryParams]="{action2:'edit', referer:'google', referer2:'twitter'}"> -->
-            <a routerLink="/detalle/{{lugar.id}}">
-
+            <!-- <a routerLink="/detalle/{{lugar.id}}"> -->
+            <a routerLink="/crear/{{lugar.id}}">
               <!-- <li class="list-group-item" *ngIf = "lugar.active">{{lugar.nombre}}</li> -->
               <li class="list-group-item">{{lugar.nombre}}</li>
             </a>

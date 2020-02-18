@@ -8,7 +8,7 @@ import { LugaresService } from '../services/lugares.service';
 })
 export class DetalleComponent {
   
-  id = null;
+  id:any = null;
   lugar:any = {};
 
   constructor(private route: ActivatedRoute, private lugaresService:LugaresService){
@@ -18,6 +18,12 @@ export class DetalleComponent {
     // console.log(this.route.snapshot.queryParams['referer']);
     // console.log(this.route.snapshot.queryParams['referer2']);
     this.id = this.route.snapshot.params['id'];
+    console.log(this.id);
+    this.lugaresService.getLugar(this.id)
+      .subscribe((lugar)=>{
+        this.lugar = lugar;
+
+      });
     // console.log(this.buscarLugar());
     //this.lugar = this.lugaresService.buscarLugar(this.id);
   }

@@ -28,7 +28,10 @@ export class LugaresService {
   //     return lugar.id == id})[0] || null;
   // }
    public guardarLugar(lugar){
-    // console.log(lugar);
+     this.afDB.collection('lugares').doc(lugar.id).set(lugar);
+   }
+
+   public editarLugar(lugar){
      this.afDB.collection('lugares').doc(lugar.id).set(lugar);
    }
 
@@ -36,5 +39,9 @@ export class LugaresService {
 
     const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + direccion + '.json?access_token=pk.eyJ1Ijoid2VyZDIwMDAiLCJhIjoiY2szdnowd3BpMHQ1eDNlbzFkbzlxbjFraCJ9._Z1lvFBENlSl58pJMCAIPg';
     return this.http.get(url);
+    }
+
+    public getLugar(id: string){
+      return this.afDB.collection('lugares').doc(id).valueChanges();
     }
 }  
