@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 @Injectable()
 export class LugaresService {
+
+  API_ENDPOINT = 'https://appportafolio-63774.firebaseio.com';
   // lugares:any = [
   //   {id:1, plan: 'pagado', cercania: 1, distancia: 10, active: true, nombre: 'Capitan Nirvana', descripcion: 'Descripción  del lugar, más adelante mayor información'},
   //   {id:2, plan: 'gratuito', cercania: 1, distancia: 12, active: true, nombre: 'Barba Roja', descripcion: 'Descripción  del lugar, más adelante mayor información'},
@@ -28,7 +30,14 @@ export class LugaresService {
   //     return lugar.id == id})[0] || null;
   // }
    public guardarLugar(lugar){
-     this.afDB.collection('lugares').doc(lugar.id).set(lugar);
+      //UTILIZANDO SOCKETS
+     //this.afDB.collection('lugares').doc(lugar.id).set(lugar);
+
+     //UTILIZANDO HTTP
+     const headers = new HttpHeaders({'Content-Type':'application/json'});
+     return this.http.post(this.API_ENDPOINT+'/lugares',lugar,{headers: headers}).subscribe();
+    
+     
    }
 
    public editarLugar(lugar){

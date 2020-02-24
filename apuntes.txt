@@ -400,3 +400,22 @@ ng g service [y el nombre]
 
 ng g s [carpeta]/[nombre]
 
+HTPP
+
+POST
+en el servicio declaramos una variable
+API_ENDPOINT = 'https://appportafolio-63774.firebaseio.com';
+
+lugares.service.ts
+
+public guardarLugar(lugar){
+      //UTILIZANDO SOCKETS
+     //this.afDB.collection('lugares').doc(lugar.id).set(lugar);
+
+     //UTILIZANDO HTTP
+     const headers = new HttpHeaders({'Content-Type':'aplication/json'});
+     return this.http.post(this.API_ENDPOINT + '/lugares.json', lugar, {headers: headers}).subscribe();
+}
+
+
+
