@@ -54,12 +54,12 @@ export class LugaresComponent implements OnInit{
     const marker = new Mapboxgl.Marker({
       draggable: true
       });
-      debugger;
+     // debugger;
       marker.setLngLat([lng, lat]);
       marker.addTo(this.mapa);
 
       marker.on('drag', ()=>{
-        console.log(marker.getLngLat);
+       // console.log(marker.getLngLat);
       })
   }
 

@@ -24,7 +24,7 @@ export class CrearComponent {
     console.log(direccion);
     this.lugaresService.obtenerGeoData(direccion)
       .subscribe((resultado: any)=>{
-      debugger;
+     // debugger;
       this.lugar.lat = resultado.features[0].center[1];
       this.lugar.lng = resultado.features[0].center[0];
       
