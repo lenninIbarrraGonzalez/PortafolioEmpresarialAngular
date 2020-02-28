@@ -27,7 +27,9 @@ export class LugaresService {
     //implementando sockets
     return this.afDB.collection('lugares').valueChanges();
 
-    //implementando el metodo get de HTTP
+    //implementando el metodo get de HTTP esto es para Real time database
+    // return this.http.get(this.API_ENDPOINT+'/lugares.json');
+
   }
   // public buscarLugar(id){
   //   return this.lugares.filter((lugar)=>{
@@ -35,13 +37,16 @@ export class LugaresService {
   // }
    public guardarLugar(lugar){
       //UTILIZANDO SOCKETS
-     this.afDB.collection('lugares').doc(lugar.id).set(lugar);
+    this.afDB.collection('lugares').doc(lugar.id).set(lugar);
 
-     //this.afDB.database.ref('lugares/'+lugar.id).set(lugar);
+    
 
-     //UTILIZANDO HTTP
-     const headers = new HttpHeaders({'Content-Type':'application/json'});
-     return this.http.post(this.API_ENDPOINT+'/lugares.json',lugar,{headers: headers}).subscribe();
+     //UTILIZANDO HTTP -- con esto guarda en Realtime Database
+    //  const headers = new HttpHeaders({'Content-Type':'application/json'});
+    //  return this.http.post(this.API_ENDPOINT+'/lugares.json',lugar,{headers: headers}).subscribe();
+
+
+   
    }
 
    public editarLugar(lugar){
@@ -54,6 +59,8 @@ export class LugaresService {
     }
 
     public getLugar(id: string){
-      return this.afDB.collection('lugares').doc(id).valueChanges();
+       return this.afDB.collection('lugares').doc(id).valueChanges();
+
+
     }
 }  

@@ -26,7 +26,13 @@ export class LugaresComponent implements OnInit{
     this.mapbox.accessToken = environment.mapboxKey;
     this.suscriptor.push(
       lugaresService.getLugares().subscribe((lugares)=>{
+        
+        //esto es para sockets        
         this.lugares = lugares;
+        //esto es para realtime database
+        // const result = lugares;
+        // this.lugares = Object.values(result);
+      
         this.buildMap();
       },
       (err)=>{
