@@ -430,3 +430,38 @@ Es posible que encadenemos pipes hasta que obtengamos el resultado que deseamos.
 
 Además de los pipes que Angular tiene por defecto, es posible que nosotros hagamos nuevos.
 
+<li class="list-group-item">{{lugar.nombre | uppercase}}</li> Mayusculas
+
+Minuscula:
+dato | lowercase
+Mayuscula:
+dato | uppercase
+Fecha:
+dato | date
+Fecha con Mayusculas:
+dato | date | uppercase
+
+Los pipes se pueden encadenar
+
+<small>Creado: {{lugar.id | date | uppercase}}</small>  tipo dato + Mayusculas
+
+Pasando parametros a los pipes
+
+<small>Creado: {{lugar.id | date: 'medium' | uppercase}}</small>  Ahora la fecha nos muestra la hora
+
+<small>Creado: {{lugar.id | date: 'short' | uppercase}}</small> formato corto 02/02/2020
+
+documentacion de angular: https://angular.io/api?type=pipe
+
+**********Creando nuestro propio pipe
+Ya que sabemos cómo pasarle parámetros a los pipes y que basado en esos parámetros tengamos
+definidas nuestras salidas, en éste vídeo aprenderemos como crear pipes propios que se ajusten
+a nuestras necesidades mas especificas.
+
+instalamos una libreria de JS
+sudo npm install linkifyjs
+
+creamos una nueva carpeta en src para pipes
+1.carpet pipes
+2. creamos un archivo linkifystr.pipe.js
+3. en el archivo incluimos:

@@ -25,6 +25,7 @@ import { CrearComponent } from './crear/crear.component';
 import { FormsModule} from '@angular/forms';
 
 import { HttpClientModule }    from '@angular/common/http';
+import { LinkifystrPipe } from 'src/pipes/linkifystr.pipe';
 
 const appRoutes: Routes = [
   {path: '', component:LugaresComponent},
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
     DetalleComponent,
     LugaresComponent,
     ContactoComponent,
-    CrearComponent
+    CrearComponent,
+    LinkifystrPipe
   ],
   imports: [
     BrowserModule,

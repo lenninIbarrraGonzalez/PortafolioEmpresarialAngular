@@ -18,10 +18,19 @@
         <ng-container *ngFor = "let lugar of lugares">
             <!-- <a routerLink="/detalle/{{lugar.id}}" [queryParams]="{action2:'edit', referer:'google', referer2:'twitter'}"> -->
             <!-- <a routerLink="/detalle/{{lugar.id}}"> -->
-            <a routerLink="/crear/{{lugar.id}}">
+              
               <!-- <li class="list-group-item" *ngIf = "lugar.active">{{lugar.nombre}}</li> -->
-              <li class="list-group-item">{{lugar.nombre}}</li>
-            </a>
+              <li class="list-group-item">
+                <a routerLink="/crear/{{lugar.id}}">
+                {{lugar.nombre | uppercase}}</a>
+                <br/>
+                <small>Creado: {{lugar.id | date: 'short' | uppercase}}</small>
+                <br/>
+                <small [innerHtml]= "lugar.descripcion | linkifystr"></small>
+                <br/>
+                <small>Dirección: {{lugar.calle}}</small>
+              </li>
+           
         </ng-container>
       </ul>
     </div>
