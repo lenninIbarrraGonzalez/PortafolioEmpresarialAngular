@@ -465,3 +465,11 @@ creamos una nueva carpeta en src para pipes
 1.carpet pipes
 2. creamos un archivo linkifystr.pipe.js
 3. en el archivo incluimos:
+
+
+Configurando animaciones en nuestro proyecto
+Las animaciones nos ayudan a resaltar elementos de nuestra pagina y hacer mas amigable la interacción de los usuarios con nuestro sitio web.
+
+Los Triggers nos ayudan a saber que animaciones y en que momentos usarlas.
+Los Estados nos ayudan a definir los estados de la animación, los elementos que vamos
+a animar tienen estados iniciales, estados finales y estados intermedios, veamos como se usan.

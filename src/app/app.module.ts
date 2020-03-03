@@ -27,6 +27,8 @@ import { FormsModule} from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
 import { LinkifystrPipe } from 'src/pipes/linkifystr.pipe';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 const appRoutes: Routes = [
   {path: '', component:LugaresComponent},
   {path: 'lugares', component: LugaresComponent},
@@ -45,7 +47,8 @@ const appRoutes: Routes = [
     LugaresComponent,
     ContactoComponent,
     CrearComponent,
-    LinkifystrPipe
+    LinkifystrPipe,
+    
   ],
   imports: [
     BrowserModule,
@@ -57,6 +60,7 @@ const appRoutes: Routes = [
     AngularFireStorageModule,
     // AngularFireAuthModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCeJen0VD75mn22rs6603basqHGe9ab1N0'
     }),

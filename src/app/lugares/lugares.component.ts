@@ -3,12 +3,30 @@ import { LugaresService } from '../services/lugares.service';
 import { environment } from 'src/environments/environment';
 import * as Mapboxgl from 'mapbox-gl';
 import { Subscription } from 'rxjs';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-lugares',
-  templateUrl: './lugares.component.html'
+  templateUrl: './lugares.component.html',
+  animations:[
+    trigger('contenedorAnimable',[
+      state('inicial', style({
+        opacity: 0.2,
+        backgroundColor: 'green'
+        // transform: 'rotate3d(0,0,0,0deg)'
+      })),
+      state('final', style({
+        opacity: 1,
+        backgroundColor: 'yellow'
+        // transform: 'rotate(5,10,20,30deg)'
+      })),
+      transition('inicial => final', animate(1000)),
+      transition ('final => inicial', animate(500))
+    ])
+  ]
 })
 export class LugaresComponent implements OnInit{
+    state = 'final';
     mapbox = (Mapboxgl as typeof Mapboxgl);
     mapa:Mapboxgl.Map;
     style = 'mapbox://styles/mapbox/streets-v11';
@@ -76,5 +94,9 @@ export class LugaresComponent implements OnInit{
     this.suscriptor.forEach(susc => {
       susc.unsubscribe();
     });
+  }
+
+  animar(){
+    this.state = (this.state === 'final') ? 'inicial' : 'final';
   }
 }
