@@ -29,6 +29,8 @@ import { LinkifystrPipe } from 'src/pipes/linkifystr.pipe';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+
 const appRoutes: Routes = [
   {path: '', component:LugaresComponent},
   {path: 'lugares', component: LugaresComponent},
@@ -47,7 +49,8 @@ const appRoutes: Routes = [
     LugaresComponent,
     ContactoComponent,
     CrearComponent,
-    LinkifystrPipe,
+    LinkifystrPipe
+   
     
   ],
   imports: [
@@ -61,12 +64,15 @@ const appRoutes: Routes = [
     // AngularFireAuthModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCeJen0VD75mn22rs6603basqHGe9ab1N0'
-    }),
+    FontAwesomeModule,
+    // AgmCoreModule.forRoot({
+    //   apiKey: 'AIzaSyCeJen0VD75mn22rs6603basqHGe9ab1N0'
+    // }),
     RouterModule.forRoot(appRoutes)
   ],
   providers: [LugaresService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+ }

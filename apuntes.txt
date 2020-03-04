@@ -473,3 +473,6 @@ Las animaciones nos ayudan a resaltar elementos de nuestra pagina y hacer mas am
 Los Triggers nos ayudan a saber que animaciones y en que momentos usarlas.
 Los Estados nos ayudan a definir los estados de la animación, los elementos que vamos
 a animar tienen estados iniciales, estados finales y estados intermedios, veamos como se usan.
+
+como implementar los iconos 
+https://www.npmjs.com/package/@fortawesome/angular-fontawesome

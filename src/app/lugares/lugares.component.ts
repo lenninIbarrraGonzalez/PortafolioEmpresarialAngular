@@ -4,6 +4,12 @@ import { environment } from 'src/environments/environment';
 import * as Mapboxgl from 'mapbox-gl';
 import { Subscription } from 'rxjs';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+// import { faCoffee, faStar } from '@fortawesome/free-solid-svg-icons';
+
+import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
+import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+
 
 @Component({
   selector: 'app-lugares',
@@ -39,8 +45,11 @@ export class LugaresComponent implements OnInit{
     lugares = null;
     suscriptor: Subscription[] = [];
     msgError: String;
-    
-  constructor(private lugaresService: LugaresService){
+    // faCoffee = faCoffee;
+    // faStar = faStar;
+
+  constructor(private lugaresService: LugaresService, library:FaIconLibrary){
+    library.addIcons(fasStar, farStar)
     this.mapbox.accessToken = environment.mapboxKey;
     this.suscriptor.push(
       lugaresService.getLugares().subscribe((lugares)=>{
