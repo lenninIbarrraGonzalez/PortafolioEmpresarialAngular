@@ -17,22 +17,22 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
   animations:[
     trigger('contenedorAnimable',[
       state('inicial', style({
-        opacity: 0.2,
-        backgroundColor: 'green'
+        opacity: 0,
+        // backgroundColor: 'green'
         // transform: 'rotate3d(0,0,0,0deg)'
       })),
       state('final', style({
         opacity: 1,
-        backgroundColor: 'yellow'
+        // backgroundColor: 'yellow'
         // transform: 'rotate(5,10,20,30deg)'
       })),
-      transition('inicial => final', animate(1000)),
-      transition ('final => inicial', animate(500))
+      transition('inicial => final', animate(4000)),
+      // transition ('final => inicial', animate(5000))
     ])
   ]
 })
 export class LugaresComponent implements OnInit{
-    state = 'final';
+    state = 'inicial';
     mapbox = (Mapboxgl as typeof Mapboxgl);
     mapa:Mapboxgl.Map;
     style = 'mapbox://styles/mapbox/streets-v11';
@@ -49,7 +49,8 @@ export class LugaresComponent implements OnInit{
     // faStar = faStar;
 
   constructor(private lugaresService: LugaresService, library:FaIconLibrary){
-    library.addIcons(fasStar, farStar)
+    library.addIcons(fasStar, farStar);
+    
     this.mapbox.accessToken = environment.mapboxKey;
     this.suscriptor.push(
       lugaresService.getLugares().subscribe((lugares)=>{
@@ -59,8 +60,9 @@ export class LugaresComponent implements OnInit{
         //esto es para realtime database
         // const result = lugares;
         // this.lugares = Object.values(result);
-      
+        
         this.buildMap();
+        this.animar();
       },
       (err)=>{
         console.log(err);
@@ -106,6 +108,7 @@ export class LugaresComponent implements OnInit{
   }
 
   animar(){
-    this.state = (this.state === 'final') ? 'inicial' : 'final';
+        console.log(this.state);
+        this.state = (this.state === 'inicial') ? 'final' : 'inicial';
   }
 }

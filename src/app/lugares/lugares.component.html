@@ -35,17 +35,12 @@
         </ng-container>
       </ul>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4" >
       <h2>Lugares Destacados</h2>
       <!-- <fa-icon [icon]="faCoffee" size="xs"></fa-icon> -->
-      
-      
-      
-      <ul class="list-group">
-        <ng-container *ngFor = "let lugar of lugares">
-          
-
-          <div *ngIf = "lugar.plan =='pagado'" class="alert alert-success" role="alert">
+      <ul class="list-group" [@contenedorAnimable]='state'>
+        <ng-container *ngFor = "let lugar of lugares" >
+          <div *ngIf = "lugar.plan =='pagado'" class="alert alert-success" role="alert" >
             {{lugar.nombre}}   
             <fa-icon [icon]="['fas', 'star']"></fa-icon>
             <fa-icon [icon]="['fas', 'star']"></fa-icon>
@@ -83,8 +78,8 @@
   </ng-container>
 </ul> -->
 
-<div class="cuadrado" [@contenedorAnimable]='state'></div>
+<!-- <div class="cuadrado" [@contenedorAnimable]='state'></div>
 <a class="btn btn-default" (click)="animar()">Animar</a>
 <button type="button" class="btn btn-info" (click)='animar()'>Info</button>
-<br/>
-<hr>
+<br/> -->
+<!-- <hr> -->
