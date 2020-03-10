@@ -3,29 +3,26 @@
 
 <!-- barra de menu o navegación -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">{{title}}</a>
+  <a class="navbar-brand">{{title}}</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
+    <div class="navbar-nav ml-auto p-2 bd-highlight">
       <a class="nav-item nav-link routerLinkActive" routerLink="/lugares">Inicio<span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link routerLinkActive" routerLink="/contacto">Contacto</a>
     </div>
   </div>
 </nav>
 
+<!-- Footer -->
+<footer id="sticky-footer" class="footer">
+  <div class="footer-copyright text-center">© 2020 Copyright:
+    <a href="https://allnexus.com.co/"> www.allnexus.com.co</a>
+  </div>
+</footer>
+<!-- Footer -->
+
 
 <router-outlet></router-outlet>
 
-<!-- Footer -->
-<footer class="navbar navbar-fixed-bottom">
-
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="https://allnexus.com.co/"> www.allnexus.com.co</a>
-  </div>
-  <!-- Copyright -->
-
-</footer>
-<!-- Footer -->

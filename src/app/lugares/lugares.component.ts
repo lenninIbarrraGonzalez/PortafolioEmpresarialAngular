@@ -41,7 +41,7 @@ export class LugaresComponent implements OnInit{
     lng:number = 0;
     lat:number = 0;
     nombre:string = null;
-    zoom:number = 16;
+    zoom:number = 13;
     lugares = null;
     suscriptor: Subscription[] = [];
     msgError: String;

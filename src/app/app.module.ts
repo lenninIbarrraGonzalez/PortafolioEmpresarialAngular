@@ -50,8 +50,6 @@ const appRoutes: Routes = [
     ContactoComponent,
     CrearComponent,
     LinkifystrPipe
-   
-    
   ],
   imports: [
     BrowserModule,

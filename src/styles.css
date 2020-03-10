@@ -1,4 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+html {
+    position: relative;
+    min-height: 100%;
+  }
+  body {
+    margin-bottom: 60px; /* Margin bottom by footer height */
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px; /* Set the fixed height of the footer here */
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #212529;
+    color: white;
+  }
+
+
 #mapa-mapbox{
     width: 100%;
     height: 300px;
@@ -13,4 +31,5 @@
     margin-left: 100px;
     margin-bottom: 100px;
 }
+
 
